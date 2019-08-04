@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import IssueService from "../services/IssueService"
 import { Header, Table, Rating } from 'semantic-ui-react'
+import {Link} from 'react-router-dom'
 
 export default class ReactIssueTracker extends Component{
 
@@ -10,24 +11,19 @@ export default class ReactIssueTracker extends Component{
         this.issueService =  new IssueService();
 
         this.state = {
-            issues : {}
+            issues : this.props.issues
         }
-        this.loadIssues();
-    }
-
-    async loadIssues (){
-        let response = await this.issueService.fetchIssues();
-        this.setState({issues:response})
     }
 
     render() {
         return(
             (this.state.issues.length>0)?
-                <div className="container-fluid">
-                    <div>
-                        <i className="fa fa-2x fa-exclamation-circle"></i>
-                        <span style={{paddingBottom:3}}> Issues {this.state.issues.length}</span></div>
-                    <div className="container ml-2 mr-2">
+                <div className="m-2">
+                    <div className="text-center">
+                        <i className="fa fa-2x fa-exclamation-circle text-warning"></i>
+                        <span style={{paddingBottom:3, fontSize :20}}> Issues {this.state.issues.length}</span>
+                    </div>
+                    <div className="container pl-4">
                     <Table celled padded>
                         <Table.Header>
                             <Table.Row>
@@ -42,13 +38,13 @@ export default class ReactIssueTracker extends Component{
                         <Table.Body>
                             {
                                 this.state.issues.map(( issue , id) =>
-                                <Table.Row>
+                                <Table.Row id={id}>
                                     <Table.Cell>
                                         <Header as='h4' textAlign='center'>
                                             {issue.number}
                                         </Header>
                                     </Table.Cell>
-                                    <Table.Cell singleLine>{issue.title}</Table.Cell>
+                                    <Table.Cell singleLine><Link to={`/issues/${issue.number}`}>{issue.title}</Link></Table.Cell>
 
                                     <Table.Cell textAlign='right'>
                                         {new Date(issue.created_at).toLocaleDateString()}
@@ -57,7 +53,7 @@ export default class ReactIssueTracker extends Component{
                                         {new Date(issue.updated_at).toLocaleDateString()}
                                     </Table.Cell>
                                     <Table.Cell>
-                                        
+                                        {issue.labels.length}
                                     </Table.Cell>
                                     <Table.Cell>
                                         {issue.state}
