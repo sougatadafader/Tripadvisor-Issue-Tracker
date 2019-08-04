@@ -16,7 +16,6 @@ export default class IssueViewer extends Component {
     }
 
     async loadComments(issueId) {
-        console.log("the issue is" + issueId)
         let issueResp = await this.issueService.fetchIssue(issueId);
         let commentResp = await this.issueService.fetchComments(issueId);
         this.setState({issue: issueResp, comments: commentResp})

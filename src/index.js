@@ -5,7 +5,6 @@ import { Route} from 'react-router-dom'
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 import '../node_modules/font-awesome/css/font-awesome.min.css';
-import '../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js';
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
 
 import '../node_modules/semantic-ui-css/semantic.min.css';
