@@ -5,6 +5,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import '../node_modules/font-awesome/css/font-awesome.min.css';
 import '../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js';
+import '../node_modules/semantic-ui-css/semantic.min.css'
 import ReactIssueTracker from './containers/ReactIssueTracker'
 
 ReactDOM.render(<ReactIssueTracker />, document.getElementById('root'));
