@@ -8,8 +8,16 @@ export default class IssueService{
          return data;
     }
 
-    fetchComments = async (commentID) => {
-        let commentsUrl = BASE_URL + "/" + commentID + "/comments";
+    async  fetchIssue (issueID){
+        let issueUrl = BASE_URL + "/" + issueID ;
+        let response = await fetch(issueUrl);
+        let data =  await response.json();
+        //console.log(JSON.stringify( data))
+        return data;
+    }
+
+    fetchComments = async (issueID) => {
+        let commentsUrl = BASE_URL + "/" + issueID + "/comments";
         let response = await fetch(commentsUrl);
         let data = await response.json();
         //console.log(JSON.stringify( data))

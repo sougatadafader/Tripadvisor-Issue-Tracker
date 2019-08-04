@@ -40,8 +40,7 @@ export default class IssueRouter extends Component {
                             <Route exact path="/issues/:issueId"
                                    render={(props) =>
                                        <IssueViewer
-                                           {...props}
-                                           issues={this.state.issues}/>
+                                           {...props}/>
                                    }/>
                             <Route render={() => <Redirect to="/issues" issues={this.state.issues}/>}/>
                         </Switch>
