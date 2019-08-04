@@ -8,8 +8,6 @@ export default class ReactIssueTracker extends Component{
     //Initialize constructor and issue Service.
     constructor(props){
         super(props);
-        this.issueService =  new IssueService();
-
         this.state = {
             issues : this.props.issues
         }
@@ -18,10 +16,10 @@ export default class ReactIssueTracker extends Component{
     render() {
         return(
             (this.state.issues.length>0)?
-                <div className="m-2">
-                    <div className="text-center">
+                <div className="m-3">
+                    <div className="text-center m-3">
                         <i className="fa fa-2x fa-exclamation-circle text-warning"></i>
-                        <span style={{paddingBottom:3, fontSize :20}}> Issues {this.state.issues.length}</span>
+                        <span style={{marginBottom:30, fontSize :20}}> {this.state.issues.length} Issues </span>
                     </div>
                     <div className="container pl-4">
                     <Table celled padded>
@@ -41,7 +39,7 @@ export default class ReactIssueTracker extends Component{
                                 <Table.Row id={id}>
                                     <Table.Cell>
                                         <Header as='h4' textAlign='center'>
-                                            {issue.number}
+                                            <Link to={`/issues/${issue.number}`}>{issue.number}</Link>
                                         </Header>
                                     </Table.Cell>
                                     <Table.Cell singleLine><Link to={`/issues/${issue.number}`}>{issue.title}</Link></Table.Cell>
@@ -53,7 +51,9 @@ export default class ReactIssueTracker extends Component{
                                         {new Date(issue.updated_at).toLocaleDateString()}
                                     </Table.Cell>
                                     <Table.Cell>
-                                        {issue.labels.length}
+                                        {issue.labels.map(( label , id) =>
+                                            <p style={{padding:5,backgroundColor:"#"+label.color,fontSize:9}}>{label.name}</p>
+                                        )}
                                     </Table.Cell>
                                     <Table.Cell>
                                         {issue.state}
