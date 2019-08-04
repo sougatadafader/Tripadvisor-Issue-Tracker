@@ -6,30 +6,31 @@ import {Redirect} from 'react-router-dom';
 import IssueViewer from './IssueViewer';
 import ReactIssueTracker from './ReactIssueTracker'
 
-
 export default class IssueRouter extends Component {
 
+    //initialize constructor
     constructor(props) {
         super(props);
         this.issueService = new IssueService();
-
         this.state = {
             issues: [],
         }
         this.loadIssues();
     }
 
-
+    //fetch issues using service
     async loadIssues() {
         let response = await this.issueService.fetchIssues();
         this.setState({issues: response})
     }
 
+    //clean up subscription from promise
     abortController = new window.AbortController();
 
     render() {
         return (
             <div>
+                {/*Definition of Routes and Switching based on url pattern*/}
                 {this.state.issues.length > 0 ?
                     <Router>
                         <Switch>
