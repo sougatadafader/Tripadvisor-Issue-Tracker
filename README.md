@@ -1,6 +1,24 @@
+## Feature Provided:
+Details page to view an Issue and the discussion. 
+
+Url: `/issues/{issueId}`
+
+This link can be accessed from the `/issues` page by clicking on any **Issue Number** or the **Title**. 
+
+
+Assumptions made: By navigating to any arbitrary URL the user will be navigated back to the `/issues` 
+Url as it contains all the listings.
+
+---
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
+
+Install all the dependencies:
+
+### `npm install`
 
 In the project directory, you can run:
 

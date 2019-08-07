@@ -1,10 +1,10 @@
 import React, {Component} from 'react'
 import IssueService from "../services/IssueService";
-import {BrowserRouter as Router, Link, Route, Switch} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import {Redirect} from 'react-router-dom';
 
 import IssueViewer from './IssueViewer';
-import ReactIssueTracker from './ReactIssueTracker'
+import ReactIssueTracker from './ReactIssueTracker';
 
 export default class IssueRouter extends Component {
 
